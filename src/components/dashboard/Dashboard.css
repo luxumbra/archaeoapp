@@ -1,0 +1,11 @@
+.user-data {
+
+}
+.user-data img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 50%;
+}
+header + div {
+    color: rgba(255,255,255, 1.0);
+}

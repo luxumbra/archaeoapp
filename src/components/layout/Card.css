@@ -1,0 +1,9 @@
+.card {
+    background: rgba(0,0,0,0.7);
+    color: rgba(255,255,255,0.7);
+}
+
+.card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
