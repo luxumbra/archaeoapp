@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import {Container, Row, Col } from 'react-bootstrap/lib'
 import SiteList from '../sites/SiteList'
-import { sites } from '../../data/sites'
-
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import './Dashboard.css'
 
 class Dashboard extends Component {
   render() {
+    // console.log(this.props);
+    const { sites } = this.props;
     return (
       <Container className="dashboard">
         <Row>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={4}>
             <article className="cf ph3 ph5-ns pv5">
               <header className="user-data fn fl-ns w-30-ns pr4-ns bt bw2">
                 <img src={`https://robohash.org/blah`} alt="Dave" />
@@ -46,7 +49,7 @@ class Dashboard extends Component {
               </div>
             </article>
           </Col>
-          <Col xs={12} md={9}>
+          <Col xs={12} md={8}>
             <SiteList sites={sites} />
           </Col>
 
@@ -56,4 +59,17 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const mapStateToProps = (state) => {
+  console.log(state);
+
+  return {
+    sites: state.firestore.ordered.sites
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'sites' }
+  ])
+)(Dashboard)

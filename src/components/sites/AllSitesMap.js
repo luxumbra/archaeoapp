@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 // import ReactTooltip from 'react-tooltip';
-import { sites } from '../../data/sites';
+
 
 const MapMarker = ({text}) => {
 
@@ -25,40 +25,38 @@ const MapMarker = ({text}) => {
     );
 }
 
-class AllSitesMap extends Component {
+const AllSitesMap = ({sites}) => {
 
-    static defaultProps = {
+    const defaultProps = {
         center: {
             lat: 54.27,
             lng: -4.36
         },
         zoom: 9
-    };
-
-    render() {
-        const allSitesArray = sites.map((site,i) => {
-            return (
-                    <MapMarker
-                        data-tip = {sites[i].sitename}
-                        data-for = {sites[i].id}
-                        key = {sites[i].id}
-                        lat = {sites[i].latitude}
-                        lng = {sites[i].longitude}
-                    />
-            );
-        });
-        // console.log({sites});
-        return (
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyBoyFkyd-IpqoQS0_4uKGsm3d6mrgn4S1M" }}
-                defaultCenter = {this.props.center}
-                defaultZoom = {this.props.zoom}
-            >
-                {allSitesArray}
-            </GoogleMapReact>
-        );
     }
 
+    const allMappedSites = sites && sites.map(site => {
+        return (
+            <MapMarker
+                data-tip={site.siteName}
+                data-for={site.id}
+                key={site.id}
+                lat={site.lat}
+                lng={site.lng}
+            />
+        )
+    })
+
+    return (
+
+        <GoogleMapReact
+            bootstrapURLKeys={{ key: "AIzaSyBoyFkyd-IpqoQS0_4uKGsm3d6mrgn4S1M" }}
+            defaultCenter = {defaultProps.center}
+            defaultZoom = {defaultProps.zoom}
+        >
+            {allMappedSites}
+        </GoogleMapReact>
+    );
 }
 
 export default AllSitesMap;

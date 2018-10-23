@@ -1,22 +1,16 @@
 import React from 'react';
-import Site from './Site';
+import SiteSummary from './SiteSummary';
 
 const SiteList = ({ sites }) => {
-    // console.log({sites});
-    const siteArray = sites.map((site, i) => {
-        return <Site
-            key={sites[i].id}
-            id={sites[i].id}
-            sitename={sites[i].sitename}
-            location={sites[i].location}
-            description={sites[i].description}
-            />
-    });
     return (
         <div className="site-list">
-            {siteArray}
+            { sites && sites.map(site => {
+                return (
+                    <SiteSummary site={site} key={site.id} />
+                )
+            })}
         </div>
-    );
+    )
 }
 
 export default SiteList;
