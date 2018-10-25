@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { createSite } from '../../store/actions/siteActions'
+
 
 class CreateSite extends Component {
 
@@ -23,6 +25,9 @@ class CreateSite extends Component {
   }
 
   render() {
+
+    const { auth } = this.props;
+    if(!auth.uid) return <Redirect to='/signin' />;
     return (
       <div className='container'>
         <h2>Add new site</h2>
@@ -52,11 +57,15 @@ class CreateSite extends Component {
     )
   }
 }
-
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
 const mapDispatchToProps = (dispatch) => {
   return {
     createSite: (site) => dispatch(createSite(site))
   }
 }
 
-export default connect(null, mapDispatchToProps)(CreateSite)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSite)

@@ -4,12 +4,16 @@ import SiteList from '../sites/SiteList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
+
 import './Dashboard.css'
 
 class Dashboard extends Component {
   render() {
     // console.log(this.props);
-    const { sites } = this.props;
+    const { sites, auth } = this.props;
+
+    if(!auth.uid) return <Redirect to='/signin' />
     return (
       <Container className="dashboard">
         <Row>
@@ -63,7 +67,8 @@ const mapStateToProps = (state) => {
   console.log(state);
 
   return {
-    sites: state.firestore.ordered.sites
+    sites: state.firestore.ordered.sites,
+    auth: state.firebase.auth
   }
 }
 

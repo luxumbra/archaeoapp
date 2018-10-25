@@ -55,9 +55,11 @@ const siteReducer = (state = initState, action) => {
 
   switch (action.type) {
     case 'CREATE_SITE':
-      console.log('Site created', action.site);
+      // console.log('Site created', action.site);
+      break;
     case 'CREATE_SITE_ERROR':
-      console.log('Site was not created!!', action.err);
+      // console.log('Site was not created!!', action.err);
+      break;
     default:
       return state
   }
