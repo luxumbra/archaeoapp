@@ -6,8 +6,6 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
-import './Dashboard.css'
-
 class Dashboard extends Component {
   render() {
     // console.log(this.props);
@@ -15,9 +13,9 @@ class Dashboard extends Component {
 
     if(!auth.uid) return <Redirect to='/signin' />
     return (
-      <Container className="dashboard">
-        <Row>
-          <Col xs={12} md={4}>
+      <div className="container dashboard">
+        <div className="row">
+          <div className='col-12 col-md-4'>
             <article className="cf ph3 ph5-ns pv5">
               <header className="user-data fn fl-ns w-30-ns pr4-ns bt bw2">
                 <img src={`https://robohash.org/blah`} alt="Dave" />
@@ -52,13 +50,13 @@ class Dashboard extends Component {
 
               </div>
             </article>
-          </Col>
-          <Col xs={12} md={8}>
+          </div>
+          <div className="col-12 col-md-8">
             <SiteList sites={sites} />
-          </Col>
+          </div>
 
-        </Row>
-      </Container>
+        </div>
+      </div>
     )
   }
 }

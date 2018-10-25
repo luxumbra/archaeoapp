@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Navigation from './components/layout/Navigation'
+// import Navigation from './components/layout/Navigation'
+import Header from './components/layout/Header'
 import Dashboard from './components/dashboard/Dashboard'
 import LandingPage from './components/Landing'
 import SiteDetails from './components/sites/SiteDetails'
@@ -8,14 +9,15 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateSite from './components/sites/CreateSite'
 
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navigation />
+          <Header />
+          {/* <Navigation /> */}
           <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route path='/dashboard' component={Dashboard} />
