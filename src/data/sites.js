@@ -1,4 +1,4 @@
-export const sites = [
+export const dummySites = [
     {
         id: 1,
         sitename: 'Cashtal Yn Ard',

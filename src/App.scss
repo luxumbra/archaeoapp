@@ -1,0 +1,78 @@
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// Optional
+// @import "../node_modules/bootstrap/scss/reboot";
+// @import "../node_modules/bootstrap/scss/type";
+// @import "../node_modules/bootstrap/scss/images";
+// @import "../node_modules/bootstrap/scss/code";
+// @import "../node_modules/bootstrap/scss/grid";
+// @import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// vars
+@import "./scss/variables";
+
+.App {
+  text-align: center;
+}
+nav.navbar {
+  background: rgba(0,0,0,0.6);
+
+  .navbar-brand {
+    color: $navLinkColor;
+  }
+  .navbar-nav {
+    a.nav-link {
+      color: $navLinkColor;
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        color: $navLinkHoverColor;
+      }
+    }
+  }
+
+}
+section, header {
+  height: 100vh;
+  max-height: 100%;
+  text-align: center;
+  color: #fff;
+
+  h1 {
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 3rem;
+    font-weight: 100;
+  }
+  .precis {
+      justify-content: center;
+  }
+}
+.intro {
+  p {
+    font-family: 'Noto Serif KR', sans-serif;
+    font-size: 2rem;
+    font-weight: 200;
+  }
+}
+
+.container, .container-fluid {
+    text-align: center;
+
+}
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

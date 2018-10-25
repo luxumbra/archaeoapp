@@ -1,7 +1,9 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap/lib'
+import { connect } from 'react-redux'
+import { signOut } from '../../store/actions/authActions'
 
-const SignedInLinks = () => {
+const SignedInLinks = (props) => {
   return (
     <Nav className="justify-content-end">
       <Nav.Item>
@@ -14,10 +16,15 @@ const SignedInLinks = () => {
         <Nav.Link href="/dashboard">DS</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link href="/">Sign Out</Nav.Link>
+        <a className='nav-link' href="/" onClick={props.signOut}>Sign Out</a>
       </Nav.Item>
     </Nav>
   )
 }
 
-export default SignedInLinks
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
+export default connect(null, mapDispatchToProps)(SignedInLinks)
