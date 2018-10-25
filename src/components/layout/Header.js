@@ -1,11 +1,16 @@
 import React from 'react';
-import Navigation from './Navigation';
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div className='header'>
-      <Navigation />
-    </div>
+    <header id='landing' className='masthead d-flex align-items-center justify-content-center'>
+      <div className="container intro">
+        {/* <div className="row">
+          <div className="col col-8 mx-auto intro"> */}
+              {props.children}
+          {/* </div>
+        </div> */}
+      </div>
+    </header>
   )
 }
 

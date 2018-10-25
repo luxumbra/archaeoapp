@@ -10,7 +10,7 @@ const Navigation = (props) => {
   // console.log(auth);
   const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   return (
-    <Navbar bg="dark" expand="lg" className='navbar-dark shadow fixed'>
+    <Navbar expand="lg">
       <Navbar.Brand href="/">ArchaeoApp</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

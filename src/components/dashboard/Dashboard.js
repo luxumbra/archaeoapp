@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Container, Row, Col } from 'react-bootstrap/lib'
 import SiteList from '../sites/SiteList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
