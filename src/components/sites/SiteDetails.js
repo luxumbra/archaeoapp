@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Card from '../layout/Card'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'

@@ -14,7 +14,14 @@
 
 // vars
 @import "./scss/variables";
+html {
+  &.sr {
+    .sr-item {
+      visibility: hidden;
+    }
 
+  }
+}
 .App {
   text-align: center;
 }
