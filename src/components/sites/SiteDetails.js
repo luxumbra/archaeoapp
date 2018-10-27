@@ -15,24 +15,26 @@ const SiteDetails = (props) => {
 
     if (site){
       return (
-        <div className='container project-details'>
-          <div className="row">
-            <div className="col site-map">
-              <p>Display map here</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <Card>
-                <h2 className='card-title'>{site.siteName}</h2>
-                <p className='card-text'>{site.description}</p>
-                <div className="card-footer text-muted">
-                  Oct 22, 22:23
+        <section id="site-details">
+          <div className='container project-details'>
+            <div className="row">
+              <div className="col site-map">
+                <p>Display map here</p>
               </div>
-              </Card>
+            </div>
+            <div className="row">
+              <div className="col">
+                <Card>
+                  <h2 className='card-title'>{site.siteName}</h2>
+                  <p className='card-text'>{site.description}</p>
+                  <div className="card-footer text-muted">
+                    Oct 22, 22:23
+              </div>
+                </Card>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       )
     } else {
       return (
