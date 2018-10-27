@@ -11,11 +11,9 @@ const Navigation = (props) => {
   const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
   return (
     <Navbar expand="lg" className="fixed-top">
-      <Navbar.Brand href="/#landing">ArchaeoApp</Navbar.Brand>
+      <Navbar.Brand href="/">ArchaeoApp</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav.Link href="/#about" data-scroll>About</Nav.Link>
-        <Nav.Link href="/#sites" data-scroll>Sites</Nav.Link>
         {links}
       </Navbar.Collapse>
     </Navbar>

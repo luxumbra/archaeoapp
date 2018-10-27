@@ -65,7 +65,7 @@ class Dashboard extends Component {
                 </div>
               </article>
             </div>
-            <div className="col-12 col-md-7 offset-1 sr-slide-left">
+            <div className="col-12 col-md-7 offset-1 sr-fade-slow">
               <SiteList sites={sites} />
             </div>
 

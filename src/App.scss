@@ -35,6 +35,12 @@ nav.navbar {
     }
   }
   .navbar-nav {
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: tint($mainBg, 80%);
+    }
     a.nav-link {
       color: $navLinkColor;
       transition: all 0.5s ease-in-out;
