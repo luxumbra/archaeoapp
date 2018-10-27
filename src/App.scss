@@ -113,6 +113,18 @@ a {
   padding-right: 0;
 }
 
+.btn-primary {
+  background: tint($mainBg, 30%);
+  border: none;
+
+  &:hover,
+  &:focus,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    background: tint($mainBg, 40%);
+  }
+
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
