@@ -29,6 +29,18 @@ const scrollReveals = [
         }
       },
       {
+        selector: '.sr-slide-up',
+        options: {
+          scale: 1,
+          origin: 'bottom',
+          distance: '100px',
+          delay: 400,
+          duration: 600,
+          easing: 'cubic-bezier(.66,.04,.38,.24)',
+          reset: true,
+        }
+      },
+      {
         selector: '.sr-item--sequence',
         options: {
           reset: true,

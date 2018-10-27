@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import withScrollReveal from 'react-scrollreveal'
+import scrollReveals from '../behaviour/scripts'
+import { compose } from 'redux'
 import { signUp } from '../../store/actions/authActions'
 
 class SignUp extends Component {
@@ -25,13 +28,16 @@ class SignUp extends Component {
   render() {
 
     const { auth, authError } = this.props;
+    const { animationContainerReference } = this.props;
+
     if (auth.uid) return <Redirect to='/dashboard' />
 
     return (
+      <div ref={animationContainerReference}>
       <section className="d-flex align-items-center justify-content-center">
         <div className='container '>
           <div className="row">
-            <div className="col col-sm-8 col-lg-4 mx-auto">
+            <div className="col col-sm-8 col-lg-4 mx-auto sr-slide-up">
               <h2>Sign Up</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -60,6 +66,7 @@ class SignUp extends Component {
           </div>
         </div>
       </section>
+      </div>
     )
   }
 }
@@ -74,4 +81,7 @@ const mapDispatchToProps = (dispatch) => {
     signUp: (newUser) => dispatch(signUp(newUser))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withScrollReveal(scrollReveals)
+)(SignUp)

@@ -24,13 +24,16 @@ class SignIn extends Component {
 
   render() {
     const  { authError, auth } = this.props
+    const { animationContainerReference } = this.props;
+
     if (auth.uid) return <Redirect to='/dashboard' />;
 
     return (
+      <div ref={animationContainerReference}>
       <section className="d-flex align-items-center justify-content-center">
         <div className='container '>
           <div className="row">
-            <div className="col col-sm-8 col-lg-4 mx-auto sr-header">
+            <div className="col col-sm-8 col-lg-4 mx-auto sr-slide-up">
               <h2>Sign In</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -51,7 +54,7 @@ class SignIn extends Component {
           </div>
         </div>
       </section>
-
+    </div>
     )
   }
 }
