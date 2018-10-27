@@ -62,7 +62,8 @@ section, header[id] {
   background: radial-gradient(ellipse at center, $mainBgTint
  1%,$mainBgDarken 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
-    &#sites {
+    &#sites,
+    &#site-details {
       padding-top: 0;
     }
     .form-wrapper {
