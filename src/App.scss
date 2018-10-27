@@ -5,7 +5,10 @@ html {
     .sr-header,
     .sr-item,
     .scale-up-subtle,
-    .sr-slide-up {
+    .sr-slide-up,
+    .sr-slide-right,
+    .sr-slide-down,
+    .sr-fade-slow {
       visibility: hidden;
     }
 
@@ -50,6 +53,11 @@ section, header[id] {
 
     &#sites {
       padding-top: 0;
+    }
+    .form-wrapper {
+      h2 {
+        font-family: 'Raleway', sans-serif;
+      }
     }
   h1, h2 {
     color: #fff;

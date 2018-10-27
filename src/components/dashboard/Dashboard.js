@@ -1,16 +1,27 @@
 import React, { Component } from 'react'
 import SiteList from '../sites/SiteList'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import ScrollReveal from 'scrollreveal'
+import scrollReveals from '../behaviour/scripts'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
+
 
 import './Dashboard.scss'
 
 class Dashboard extends Component {
+
+  componentDidMount() {
+    // console.log(scrollReveals);
+
+    ScrollReveal().reveal(scrollReveals[5].selector, scrollReveals[5].options);
+    ScrollReveal().reveal(scrollReveals[2].selector, scrollReveals[2].options);
+    ScrollReveal().reveal(scrollReveals[7].selector, scrollReveals[7].options);
+  }
   render() {
-    console.log(this.props);
-    const { sites, auth } = this.props;
+    // console.log(this.props);
+    const { sites, auth, user } = this.props;
 
     if(!auth.uid) return <Redirect to='/signin' />
     return (
@@ -19,13 +30,13 @@ class Dashboard extends Component {
           <div className="row">
             <div className='col-12 col-md-4'>
               <article>
-                <header className="user-data">
+                <header className="user-data sr-slide-down">
                   <img src={`https://robohash.org/blah`} alt="Dave" />
-                  <h1>Dave</h1>
-                  <p className="lead">Strapline written by the user.</p>
-                  <span data-feather="email">Email: <a href="mailto:hello@crafted.im">hello@crafted.im</a></span>
+                  <h1>{user.firstName} {user.lastName}</h1>
+                  <p className="lead">{user.strapline}</p>
+                  <span data-feather="email">Email: <a href={`mailto:${auth.email}`}>{auth.email}</a></span>
                 </header>
-                <div className="bio">
+                <div className="bio sr-fade-slow">
                   <h2>Bio</h2>
                   <p className="f5 lh-copy mt0-ns">
                     TYPOGRAPHY, even when poorly executed, can never be taken for granted;
@@ -41,7 +52,7 @@ class Dashboard extends Component {
                     once when the type is too small or otherwise irritates the eye; both are
                     signs of a certain illegibility already.
               </p>
-                  <p className="f5 lh-copy">
+              <p className="f5 lh-copy">
                     All typography consists of letters. These appear either in the form of a
                     smoothly running sentence or as an assembly of lines, which may even have
                     contrasting shapes. Good typog- raphy begins, and this is no minor
@@ -54,7 +65,7 @@ class Dashboard extends Component {
                 </div>
               </article>
             </div>
-            <div className="col-12 col-md-7 offset-1">
+            <div className="col-12 col-md-7 offset-1 sr-slide-left">
               <SiteList sites={sites} />
             </div>
 
@@ -71,14 +82,13 @@ const mapStateToProps = (state) => {
   return {
     sites: state.firestore.ordered.sites,
     auth: state.firebase.auth,
-    user: state.firebase.auth.uid,
+    user: state.firebase.profile,
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'sites' },
-    { collection: 'users' },
+    { collection: 'sites' }
   ])
 )(Dashboard)
