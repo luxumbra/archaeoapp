@@ -1,5 +1,9 @@
+// functions
+@import "./scss/functions";
 // vars
 @import "./scss/variables";
+
+
 html {
   &.sr {
     .sr-header,
@@ -49,7 +53,8 @@ section, header[id] {
   text-align: center;
   color: #fff;
   padding-top: 5rem;
-  background: radial-gradient(ellipse at center, #00444c 1%,#001f23 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: radial-gradient(ellipse at center, $mainBgTint
+ 1%,$mainBgDarken 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
     &#sites {
       padding-top: 0;

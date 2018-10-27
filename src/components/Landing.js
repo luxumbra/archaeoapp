@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AllSitesMap from './sites/AllSitesMap';
-import withScrollReveal from 'react-scrollreveal'
+import ScrollReveal from 'scrollreveal'
 import scrollReveals from './behaviour/scripts'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
@@ -12,28 +12,20 @@ import './Landing.scss'
 class LandingPage extends Component {
 
   // TODO: Need to delay loading of the map to speed up this page
-  // componentDidMount() {
-  //   const LandingMap = (props) => {
-  //     const { sites } = this.props;
-  //     return (
-  //       <section id="sites" className="main vh-100 sr-item">
-  //         <AllSitesMap sites={sites} />
-  //       </section>
-  //     )
-  //   }
-  // }
+
+  componentDidMount() {
+    ScrollReveal().reveal(scrollReveals[1].selector, scrollReveals[1].options);
+    ScrollReveal().reveal(scrollReveals[0].selector, scrollReveals[0].options);
+    ScrollReveal().reveal(scrollReveals[3].selector, scrollReveals[3].options);
+  }
 
 
   render() {
 
     const { sites } = this.props;
-    const { animationContainerReference } = this.props;
-    console.log({animationContainerReference});
 
     return (
-      <div ref={animationContainerReference}>
       <div className="wrapper">
-
           <Header>
             {/* <img src={`http://tachyons.io/img/logo.jpg`} className="App-logo br-100 pa1 ba b--black-10 h3 w3" alt="avatar" /> */}
             <h1>ArchaeoApp</h1>
@@ -49,10 +41,8 @@ class LandingPage extends Component {
           <section id="sites" className="main vh-100 sr-item">
             <AllSitesMap sites={sites} />
           </section>
-
-        </div>
-
       </div>
+
     );
   }
 
@@ -66,7 +56,6 @@ const mapStateToProps = (state) => {
 }
 export default compose(
   connect(mapStateToProps),
-  withScrollReveal(scrollReveals),
   firestoreConnect([
     { collection: 'sites' }
   ])

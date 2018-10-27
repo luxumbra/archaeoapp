@@ -1,3 +1,7 @@
+// functions
+@import "../scss/functions";
+// vars
+@import "../scss/variables";
 section,
 header {
     background-size: cover;
@@ -8,7 +12,7 @@ header {
 
 }
 #about {
-  background-color: #00444c;
+  background-color:$mainBg;
   background-image: url('../assets/img/social_archaeology.jpg');
   background-position: center;
 }

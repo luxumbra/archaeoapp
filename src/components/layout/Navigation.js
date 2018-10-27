@@ -14,7 +14,6 @@ const Navigation = (props) => {
       <Navbar.Brand href="/#landing">ArchaeoApp</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav.Link href="/#landing" data-scroll>Home</Nav.Link>
         <Nav.Link href="/#about" data-scroll>About</Nav.Link>
         <Nav.Link href="/#sites" data-scroll>Sites</Nav.Link>
         {links}
