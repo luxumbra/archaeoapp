@@ -28,7 +28,6 @@
     "file-loader": "2.0.0",
     "firebase": "^5.5.5",
     "fs-extra": "7.0.0",
-    "google-map-react": "^1.0.9",
     "google-maps-react": "^2.0.2",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
