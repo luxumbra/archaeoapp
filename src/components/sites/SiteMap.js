@@ -10,7 +10,7 @@ const MapMarker = ({ text }) => {
       color: 'white',
       width: '10px',
       height: '10px',
-      background: 'rgba(0,0,0,0.5)',
+      background: '#00444c',
       overflow: 'hidden',
       padding: '5px',
       display: 'inline-flex',

@@ -24,11 +24,21 @@ const SiteDetails = (props) => {
               </div>
             </div>
             <div className="row">
-              <div className="col site-info">
+              <div className="col col-10 col-lg-8 mx-auto site-info">
                   <h2 className=''>{site.siteName}</h2>
+                  <p className="lead">{site.summary}</p>
                   <p className=''>{site.description}</p>
                   <div className="">
                     Oct 22, 22:23
+                  </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col col-10 col-lg-8 mx-auto site-data">
+                <h3>Site data</h3>
+
+                <div className="">
+                  Oct 22, 22:23
                   </div>
               </div>
             </div>
