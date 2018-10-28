@@ -16,10 +16,10 @@ const SiteDetails = (props) => {
 
     if (site){
       return (
-        <section id="site-details" className="d-flex align-items-start justify-content-center">
+        <section id="site-details" className="d-flex align-items-start justify-content-center free-height">
           <div className='container-fluid'>
             <div className="row">
-              <div className="col site-map">
+              <div className="col site-map fixed">
                 <SiteMap site={site} />
               </div>
             </div>
@@ -28,18 +28,25 @@ const SiteDetails = (props) => {
                   <h2 className=''>{site.siteName}</h2>
                   <p className="lead">{site.summary}</p>
                   <p className=''>{site.description}</p>
-                  <div className="">
-                    Oct 22, 22:23
-                  </div>
               </div>
             </div>
             <div className="row">
               <div className="col col-10 col-lg-8 mx-auto site-data">
                 <h3>Site data</h3>
-
-                <div className="">
-                  Oct 22, 22:23
+                <div className="row">
+                  <div className="col col-6">
+                    <dl className="data-list d-flex flex-row flex-wrap">
+                      <dt>Geo Location</dt>
+                      <dd>Lat: {site.lat} / Lng: {site.lng}</dd>
+                      <dt>Location</dt>
+                      <dd>{site.location}</dd>
+                      <dt>Added by</dt>
+                      <dd>{site.userFirstName} {site.userLastName}</dd>
+                      <dt>Location</dt>
+                      <dd>{site.location}</dd>
+                    </dl>
                   </div>
+                </div>
               </div>
             </div>
           </div>

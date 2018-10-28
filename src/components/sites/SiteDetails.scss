@@ -23,3 +23,17 @@ h3 {
   font-family: 'Dosis', sans-serif;
   font-weight: 100;
 }
+.data-list {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 100;
+  text-align: left;
+
+  dt {
+    width: 30%;
+  }
+  dd {
+    width: 60%;
+    margin-left: 10%;
+  }
+}

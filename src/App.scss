@@ -67,11 +67,17 @@ section, header[id] {
     &#site-details {
       padding-top: 0;
     }
+
     .form-wrapper {
       h2 {
         font-family: 'Raleway', sans-serif;
       }
     }
+  &.free-height {
+    min-height: 100%;
+    max-height: none;
+    height: auto;
+  }
   h1, h2 {
     color: #fff;
     font-family: 'Raleway', sans-serif;
@@ -84,7 +90,9 @@ section, header[id] {
     font-weight: 200;
   }
   p {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 100;
   }
   .precis {
       justify-content: center;
