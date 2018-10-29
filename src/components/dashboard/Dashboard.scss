@@ -3,6 +3,13 @@
   height: 100%;
 
 }
+.card {
+  .card-header {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
 .user-data {
   padding-bottom: 2rem;
   h1 {

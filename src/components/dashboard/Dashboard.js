@@ -51,17 +51,7 @@ class Dashboard extends Component {
                     something can be read with ease, but the average reader will rebel at
                     once when the type is too small or otherwise irritates the eye; both are
                     signs of a certain illegibility already.
-              </p>
-              <p className="f5 lh-copy">
-                    All typography consists of letters. These appear either in the form of a
-                    smoothly running sentence or as an assembly of lines, which may even have
-                    contrasting shapes. Good typog- raphy begins, and this is no minor
-                    matter, with the typeset- ting of a single line of text in a book or a
-                    newspaper. Using exactly the same typeface, it is possible to create either
-                    a pleasant line, easily read, or an onerous one. Spacing, if it is too wide
-                    or too compressed, will spoil almost any typeface.
-              </p>
-
+                  </p>
                 </div>
               </article>
             </div>
