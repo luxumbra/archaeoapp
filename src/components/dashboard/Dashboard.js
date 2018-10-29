@@ -31,7 +31,7 @@ class Dashboard extends Component {
             <div className='col-12 col-md-4'>
               <article>
                 <header className="user-data sr-slide-down">
-                  <img src={`https://robohash.org/blah`} alt="Dave" />
+                  <img src={`https://robohash.org/${auth.uid}`} alt="Dave" />
                   <h1>{user.firstName} {user.lastName}</h1>
                   <p className="lead">{user.strapline}</p>
                   <span data-feather="email">Email: <a href={`mailto:${auth.email}`}>{auth.email}</a></span>

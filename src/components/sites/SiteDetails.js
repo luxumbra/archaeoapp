@@ -12,7 +12,7 @@ const SiteDetails = (props) => {
     const { site, auth } = props
 
     // console.log('Site details props: ', props);
-    if(!auth.uid) return <Redirect to='/signin' />;
+    // if(!auth.uid) return <Redirect to='/signin' />;
 
     if (site){
       return (
