@@ -9,7 +9,7 @@ const SignedInLinks = (props) => {
   return (
     <Nav className="justify-content-end">
       <Nav.Item>
-        <Nav.Link href="/sites" data-scroll>Sites</Nav.Link>
+        <Nav.Link href="/#sites" data-scroll>Sites</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/dashboard">Dashboard</Nav.Link>
