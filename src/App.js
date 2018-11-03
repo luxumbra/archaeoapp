@@ -16,15 +16,19 @@ class App extends Component {
     loading: true
   }
   componentDidMount() {
-    var html = document.getElementsByTagName("html");
-    html[0].classList.add("loaded");
+
+    // html[0].classList.add("loaded");
     // setTimeout(() => this.setState({ loading: false }), 1500);
-    this.setState({ loading: false });
+    this.setState({ loading:false });
   }
   render() {
     const { loading } = this.state;
+    const html = document.getElementsByTagName("html");
     if(loading) {
+      html[0].classList.add("loading");
       return null;
+    } else {
+      html[0].classList.remove("loading");
     }
     return (
       <BrowserRouter>
