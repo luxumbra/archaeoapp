@@ -1,38 +1,56 @@
-import React, { Component } from 'react'
-import Card from '../layout/Card'
+import React from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
+import SiteMap from './SiteMap'
 
+import './SiteDetails.scss'
 
 const SiteDetails = (props) => {
 
-    const { site, auth } = props
+    const { site } = props
 
     // console.log('Site details props: ', props);
-    if(!auth.uid) return <Redirect to='/signin' />;
+    // if(!auth.uid) return <Redirect to='/signin' />;
 
     if (site){
       return (
-        <div className='container project-details'>
-          <div className="row">
-            <div className="col site-map">
-              <p>Display map here</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <Card>
-                <h2 className='card-title'>{site.siteName}</h2>
-                <p className='card-text'>{site.description}</p>
-                <div className="card-footer text-muted">
-                  Oct 22, 22:23
+        <section id="site-details" className="d-flex align-items-start justify-content-center free-height">
+          <div className='container-fluid'>
+            <div className="row">
+              <div className="col site-map fixed">
+                <SiteMap site={site} />
               </div>
-              </Card>
+            </div>
+            <div className="row">
+              <div className="col col-10 col-lg-8 mx-auto site-info">
+                  <h2 className=''>{site.siteName}</h2>
+                  <p className="lead">{site.summary}</p>
+                  <p className=''>{site.description}</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col col-10 col-lg-8 mx-auto site-data">
+                <h3>Site data</h3>
+                <div className="row">
+                  <div className="col col-6">
+                    <dl className="data-list d-flex flex-row flex-wrap">
+                      <dt>Geo Location</dt>
+                      <dd>Lat: {site.lat} / Lng: {site.lng}</dd>
+                      <dt>Location</dt>
+                      <dd>{site.location}</dd>
+                      <dt>Added by</dt>
+                      <dd>{site.userFirstName} {site.userLastName}</dd>
+                      <dt>Location</dt>
+                      <dd>{site.location}</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       )
     } else {
       return (

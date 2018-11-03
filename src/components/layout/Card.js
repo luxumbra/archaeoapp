@@ -1,13 +1,12 @@
 import React from 'react';
-import './Card.css';
+import './Card.scss';
 
 const Card = (props) => {
+    // console.log(props);
 
     return (
-        <div className="card shadow">
-            <div className="card-body">
-                {props.children}
-            </div>
+        <div className={props.classes}>
+            {props.children}
         </div>
         );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, compose } from "redux";
@@ -20,7 +20,13 @@ const store = createStore(
       getFirestore
     })),
     reduxFirestore(fbConfig),
-    reactReduxFirebase(fbConfig, {attachAuthIsReady: true})
+    reactReduxFirebase(fbConfig,
+      {
+        useFirestoreForProfile: true,
+        userProfile: 'users',
+        attachAuthIsReady: true
+      }
+    )
   )
 );
 

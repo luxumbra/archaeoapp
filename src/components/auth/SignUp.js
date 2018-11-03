@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import ScrollReveal from 'scrollreveal'
+import scrollReveals from '../behaviour/scripts'
+import { compose } from 'redux'
 import { signUp } from '../../store/actions/authActions'
 
 class SignUp extends Component {
@@ -21,17 +24,21 @@ class SignUp extends Component {
     this.props.signUp(this.state);
     // console.log(this.state);
   }
-
+  componentDidMount() {
+    ScrollReveal().reveal(scrollReveals[4].selector, scrollReveals[4].options);
+    ScrollReveal().reveal(scrollReveals[2].selector, scrollReveals[2].options);
+  }
   render() {
 
     const { auth, authError } = this.props;
+
     if (auth.uid) return <Redirect to='/dashboard' />
 
     return (
       <section className="d-flex align-items-center justify-content-center">
         <div className='container '>
           <div className="row">
-            <div className="col col-sm-8 col-lg-4 mx-auto">
+            <div className="form-wrapper col col-sm-8 col-lg-4 mx-auto sr-slide-up sr-fade-slow">
               <h2>Sign Up</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -74,4 +81,6 @@ const mapDispatchToProps = (dispatch) => {
     signUp: (newUser) => dispatch(signUp(newUser))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)(SignUp)

@@ -5,6 +5,12 @@ const SignedOutLinks = () => {
   return (
     <Nav className="justify-content-center">
       <Nav.Item>
+        <Nav.Link href="/#about" data-scroll>About</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="/#sites" data-scroll>Sites</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
         <Nav.Link href="/signup">Sign Up</Nav.Link>
       </Nav.Item>
       <Nav.Item>

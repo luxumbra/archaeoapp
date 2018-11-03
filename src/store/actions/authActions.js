@@ -32,6 +32,7 @@ export const signUp = (newUser) => {
       newUser.email,
       newUser.password,
     ).then((resp) => {
+      console.log('Response: ', resp);
       // we use doc() not add() here as we are using the firebase auth uid, so we can have data linked to that user
       return firestore.collection('users').doc(resp.user.uid).set({
         firstName: newUser.firstName,

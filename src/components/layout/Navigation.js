@@ -1,20 +1,19 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap/lib'
+import { Navbar } from 'react-bootstrap/lib'
 import SignedInLinks from  './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from 'react-redux'
 
 const Navigation = (props) => {
 
-  const { auth } = props;
+  const { auth, profile } = props;
   // console.log(auth);
-  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+  const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className="fixed-top navbar-dark">
       <Navbar.Brand href="/">ArchaeoApp</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav.Link href="/">Home</Nav.Link>
         {links}
       </Navbar.Collapse>
     </Navbar>
@@ -24,7 +23,8 @@ const Navigation = (props) => {
 const mapStateToProps = (state) => {
   // console.log('Auth state: ', state);
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   }
 }
 export default connect(mapStateToProps)(Navigation)
