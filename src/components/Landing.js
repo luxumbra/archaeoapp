@@ -26,7 +26,7 @@ class LandingPage extends Component {
 
     return (
       <div className="wrapper">
-          <Header>
+          <Header id="home">
             {/* <img src={`http://tachyons.io/img/logo.jpg`} className="App-logo br-100 pa1 ba b--black-10 h3 w3" alt="avatar" /> */}
             <h1>ArchaeoApp</h1>
             <p className="intro tracked">A social app for archaeology nerds, built with ReactJS.</p>
