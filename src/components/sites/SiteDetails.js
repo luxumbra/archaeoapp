@@ -2,14 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 import SiteMap from './SiteMap'
 
 import './SiteDetails.scss'
 
 const SiteDetails = (props) => {
 
-    const { site, auth } = props
+    const { site } = props
 
     // console.log('Site details props: ', props);
     // if(!auth.uid) return <Redirect to='/signin' />;

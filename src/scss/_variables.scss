@@ -4,3 +4,6 @@ $navLinkHoverColor: rgba(255,255,255,0.8);
 $mainBg: #00444c;
 $mainBgDarken: shade($mainBg, 90%);
 $mainBgTint: tint($mainBg, 5%);
+$mainGradient: radial-gradient(ellipse at center, $mainBgTint
+ 1%,$mainBgDarken 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+$secondaryColor: #cf142b;

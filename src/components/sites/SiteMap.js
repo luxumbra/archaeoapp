@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import React from 'react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 // export class MapContainer extends Component {
 //   render() {
@@ -24,20 +24,20 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 // })(MapContainer)
 
 
-const markerStyles = {
-      color: 'white',
-      width: '30px',
-      height: '30px',
-      background: '#fff',
-      overflow: 'hidden',
-      padding: '5px',
-      display: 'inline-flex',
-      textAlign: 'center',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: '50%',
-      transform: 'translate(-50%, -50%)'
-}
+// const markerStyles = {
+//       color: 'white',
+//       width: '30px',
+//       height: '30px',
+//       background: '#fff',
+//       overflow: 'hidden',
+//       padding: '5px',
+//       display: 'inline-flex',
+//       textAlign: 'center',
+//       alignItems: 'center',
+//       justifyContent: 'center',
+//       borderRadius: '50%',
+//       transform: 'translate(-50%, -50%)'
+// }
 
 const SiteMap = (props) => {
 
@@ -129,8 +129,8 @@ const SiteMap = (props) => {
       }
     ]
   }
-  console.log('Google props: ', google);
-  console.log('Site props: ', site);
+  // console.log('Google props: ', google);
+  // console.log('Site props: ', site);
 
   const mappedSite = (
       <Marker

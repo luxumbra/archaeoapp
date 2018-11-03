@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import ScrollReveal from 'scrollreveal'
 import scrollReveals from '../behaviour/scripts'
 // import { compose } from 'redux'

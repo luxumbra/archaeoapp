@@ -47,6 +47,7 @@
     "react-bootstrap": "^1.0.0-beta.1",
     "react-dev-utils": "^6.0.5",
     "react-dom": "^16.5.2",
+    "react-preloading-component": "0.0.5",
     "react-redux": "^5.0.7",
     "react-redux-firebase": "^2.1.8",
     "react-router-dom": "^4.3.1",

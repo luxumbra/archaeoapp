@@ -11,6 +11,11 @@
 // @import "../node_modules/bootstrap/scss/grid";
 // @import "../node_modules/bootstrap/scss/navbar";
 @import "../node_modules/bootstrap/scss/bootstrap";
+// functions
+@import "./scss/functions";
+// vars
+@import "./scss/variables";
+
 body {
   color: #fff;
   font-size: 14px;
@@ -21,6 +26,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
+
+  #root {
+
+  }
 }
 
 code {

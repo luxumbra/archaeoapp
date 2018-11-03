@@ -5,6 +5,8 @@
 
 
 html {
+  background-color: $mainBg;
+
   &.sr {
     .sr-header,
     .sr-item,
@@ -18,9 +20,47 @@ html {
 
   }
 }
+body {
+  // div[class*="Preloading"] {
+  //   display: flex !important;
+  // }
+  // &[data-gr-c-s-loaded="true"] {
+  //   [class*="Preloading"] {
+  //     display: none !important;
+  //   }
+  // }
+
+  .loader:empty {
+    position: absolute;
+    top: calc(50% - 4em);
+    left: calc(50% - 4em);
+    width: 6em;
+    height: 6em;
+    background: rgba(255,255,255, 0);
+    border: 1.1em solid rgba(255,255,255, 0.9);
+    border-left: 1.1em solid rgba($secondaryColor, 0.8);
+    border-radius: 50%;
+    animation: load8 1.1s infinite linear;
+  }
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+}
 .App {
   text-align: center;
 }
+
 nav.navbar {
   background: rgba(0,0,0,0.7);
   background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.88), rgba(0,0,0,0.85));
@@ -60,8 +100,7 @@ section, header[id] {
   text-align: center;
   color: #fff;
   padding-top: 5rem;
-  background: radial-gradient(ellipse at center, $mainBgTint
- 1%,$mainBgDarken 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: $mainGradient;
 
     &#sites,
     &#site-details {
