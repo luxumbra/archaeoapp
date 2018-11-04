@@ -12,10 +12,13 @@ const SiteDetails = (props) => {
 
     const { site } = props
 
+
     console.log('Site details props: ', props);
     // if(!auth.uid) return <Redirect to='/signin' />;
 
     if (site){
+      const siteAdded = site.createdAt.toDate().toString()
+
       return (
         <div className="wrapper">
           <section id="site-details" className="d-flex align-items-start justify-content-center free-height site-details" onLoad={window.scrollTo(0, 0)}>
@@ -45,7 +48,7 @@ const SiteDetails = (props) => {
                         <dt>Added by</dt>
                         <dd>{site.userFirstName} {site.userLastName}</dd>
                         <dt>Date added</dt>
-                        <dd><Moment date={site.createdAt} /></dd>
+                        <dd><Moment fromNow date={siteAdded} /></dd>
                       </dl>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ const Navigation = (props) => {
     <Navbar expand="lg" className="fixed-top navbar-dark">
       <Navbar.Brand href="/#home">ArchaeoApp</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         {links}
       </Navbar.Collapse>
     </Navbar>
