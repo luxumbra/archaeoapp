@@ -19,9 +19,9 @@ const SiteDetails = (props) => {
       return (
         <div className="wrapper">
           <section id="site-details" className="d-flex align-items-start justify-content-center free-height site-details" onLoad={window.scrollTo(0, 0)}>
-            <div className='container'>
+            <div className='container-fluid'>
               <div className="row">
-                <div className="col mx-auto site-map">
+                <div className="col col-12 mx-auto site-map">
                   <SiteMap site={site} />
                 </div>
               </div>

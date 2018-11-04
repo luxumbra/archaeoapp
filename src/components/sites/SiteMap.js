@@ -157,6 +157,7 @@ const SiteMap = (props) => {
       zoom={defaultProps.zoom}
       initialCenter={defaultProps.center}
       styles={defaultProps.styles}
+      width="100%"
     >
       {mappedSite}
     </Map>
