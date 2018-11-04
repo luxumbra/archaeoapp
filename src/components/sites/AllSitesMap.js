@@ -14,7 +14,7 @@ class AllSitesMap extends Component {
       // console.log(this.state);
 
       const onMarkerClick = (props, site, marker, e) => {
-        console.log('Marker click: ', site);
+        // console.log('Marker click: ', site);
         this.setState({ redirect: true, siteId: site.id });
       }
       if(this.state.redirect) {
@@ -27,6 +27,8 @@ class AllSitesMap extends Component {
           lat: 54.27,
           lng: -4.36
         },
+        disableDefaultUI: true, // a way to quickly hide all controls
+        mapTypeControl: false,
         zoom: 9,
         styles: [
           { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
@@ -109,6 +111,7 @@ class AllSitesMap extends Component {
           }
         ]
       }
+      console.log(google);
 
       const allMappedSites = sites && sites.map(site => {
 
@@ -131,6 +134,7 @@ class AllSitesMap extends Component {
         zoom={defaultProps.zoom}
         initialCenter={defaultProps.center}
         styles={defaultProps.styles}
+        options={defaultProps.mapTypeControl}
       >
         {allMappedSites}
       </Map>

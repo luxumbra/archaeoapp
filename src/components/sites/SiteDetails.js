@@ -16,7 +16,7 @@ const SiteDetails = (props) => {
 
     if (site){
       return (
-        <section id="site-details" className="d-flex align-items-start justify-content-center free-height">
+        <section id="site-details" className="d-flex align-items-start justify-content-center free-height" onLoad={window.scrollTo(0, 0)}>
           <div className='container-fluid'>
             <div className="row">
               <div className="col site-map fixed">

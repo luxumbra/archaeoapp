@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Wave } from 'react-preloading-component'
 import Navigation from './components/layout/Navigation'
 import Dashboard from './components/dashboard/Dashboard'
 import LandingPage from './components/Landing'
@@ -16,9 +15,6 @@ class App extends Component {
     loading: true
   }
   componentDidMount() {
-
-    // html[0].classList.add("loaded");
-    // setTimeout(() => this.setState({ loading: false }), 1500);
     this.setState({ loading:false });
   }
   render() {
@@ -31,11 +27,11 @@ class App extends Component {
       html[0].classList.remove("loading");
     }
     return (
-      <BrowserRouter>
+      <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
         <div className="App">
           <Navigation />
           <Switch>
-            <Route exact path='/#home' component={LandingPage} />
+            <Route exact path='/' component={LandingPage} />
             <Route path='/dashboard' component={Dashboard} />
             <Route path='/site/:id' component={SiteDetails} />
             <Route path='/signin' component={SignIn} />
