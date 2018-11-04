@@ -1,12 +1,14 @@
-
+.site-details {
+  .container {
+    max-width: 100%;
+  }
+}
 .site-map {
   height: 65vh;
   max-height: 800px;
+  max-width: 100%;
   box-shadow: 0 0 5rem rgba(0,0,0,0.9);
-
-  div {
-
-  }
+  overflow-x: hidden;
 }
 .site-info {
   padding-top: 2rem;

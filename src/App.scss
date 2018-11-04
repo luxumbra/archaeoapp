@@ -31,7 +31,8 @@ body {
   //     display: none !important;
   //   }
   // }
-
+    overflow-x: hidden;
+    width: 100%;
   .loader:empty {
     position: absolute;
     top: calc(50% - 4em);
