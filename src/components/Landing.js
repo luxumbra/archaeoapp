@@ -35,7 +35,8 @@ class LandingPage extends Component {
           <section id="about" className="d-flex align-items-center justify-content-center">
             <div className="container scale-up-subtle">
               <h2>Archaeology made social</h2>
-              <p className="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, eos. Dolor repellat, repellendus quas laborum ea ratione quibusdam, laboriosam doloremque eum, modi voluptate eligendi atque nihil. Non culpa sint eveniet. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, dignissimos, qui. Ab ipsum voluptatum enim, alias excepturi fugit provident velit corporis illo facere vel nisi atque laborum sit, adipisci quod!</p>
+              <p className="lead">ArchaeoApp is a tool for archaeology fans. Document, share and discover archaeological sites wherever you are in the world.  </p>
+              <p>ArchaeoApp was born from a passion for archaeology and the lack of somewhere central to put all of our knowledge, photos and research on sites that we'd visited. So, being a web developer by trade, I decided to build a simple app to enable us to document all of this interesting stuff. Well, that simple app has bigger plans now and if you're in to archaeology and like to document your adventures and experiences, then watch this space! :)</p>
             </div>
           </section>
           <section id="sites" className="main vh-100 sr-item">
