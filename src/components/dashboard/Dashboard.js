@@ -22,6 +22,7 @@ class Dashboard extends Component {
   render() {
     // console.log(this.props);
     const { sites, auth, user } = this.props;
+    // console.log(sites);
 
     if(!auth.uid) return <Redirect to='/signin' />
     return (
@@ -68,7 +69,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  // console.log('MSTP state: ', state);
+
   return {
     sites: state.firestore.ordered.sites,
     auth: state.firebase.auth,
@@ -78,7 +80,10 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([
-    { collection: 'sites' }
+  firestoreConnect((props) => [
+    {
+      collection: 'sites',
+      where: ['userId', '==', props.auth.uid]
+    }
   ])
 )(Dashboard)

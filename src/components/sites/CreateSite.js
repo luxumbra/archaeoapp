@@ -13,7 +13,7 @@ class CreateSite extends Component {
   state = {
     siteName: '',
     location: '',
-    images: null,
+    // images: null,
     lat: '',
     lng: '',
     description: ''
@@ -64,10 +64,10 @@ class CreateSite extends Component {
                     <label htmlFor="location">Location</label>
                     <input type="text" className="form-control" id="location" placeholder="Enter location" onChange={this.handleChange} />
                   </div>
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label htmlFor="images">Images</label>
                     <input type="file" multiple className="form-control" id="images" onChange={this.handleFileSelect} />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col col-6">
                   <div className="form-group">
@@ -77,9 +77,9 @@ class CreateSite extends Component {
                       <label htmlFor="lat">Longitude</label>
                       <input type="text" className="form-control" id="lng" aria-describedby="lngHelp" placeholder="Enter Longitude" onChange={this.handleChange} />
                     </div>
-                    <label htmlFor="siteName">Site Name</label>
+                    {/* <label htmlFor="siteName">Site Name</label>
                     <input type="text" className="form-control" id="siteName" aria-describedby="nameHelp" placeholder="Enter Site Name" onChange={this.handleChange} />
-                    <small id="nameHelp" className="form-text text-muted">Example: Cashtal yn Ard.</small>
+                    <small id="nameHelp" className="form-text text-muted">Example: Cashtal yn Ard.</small> */}
                   </div>
                 </div>
                 <div className="col col-8">
