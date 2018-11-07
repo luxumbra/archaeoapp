@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import ScrollReveal from 'scrollreveal'
 import scrollReveals from '../behaviour/scripts'
 // import { compose } from 'redux'
@@ -20,9 +20,9 @@ class CreateSite extends Component {
   }
   handleFileSelect = (event) => {
     console.log(event.target.files);
-    this.setState({
-      images: event.target.files[0]
-    })
+    // this.setState({
+    //   images: event.target.files[0]
+    // })
   }
   // fileUploadHandler = () => {
   //   axios.post()
@@ -64,10 +64,10 @@ class CreateSite extends Component {
                     <label htmlFor="location">Location</label>
                     <input type="text" className="form-control" id="location" placeholder="Enter location" onChange={this.handleChange} />
                   </div>
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label htmlFor="images">Images</label>
                     <input type="file" multiple className="form-control" id="images" onChange={this.handleFileSelect} />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col col-6">
                   <div className="form-group">

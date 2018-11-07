@@ -69,11 +69,12 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('MSTP state: ', state);
+  // console.log('MSTP users: ', state.firestore.ordered.users);
 
   return {
     sites: state.firestore.ordered.sites,
     auth: state.firebase.auth,
+    users: state.firestore.ordered.users,
     user: state.firebase.profile,
   }
 }
@@ -84,6 +85,9 @@ export default compose(
     {
       collection: 'sites',
       where: ['userId', '==', props.auth.uid]
-    }
+    },
+    // {
+    //   collection: 'users'
+    // }
   ])
 )(Dashboard)

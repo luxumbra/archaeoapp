@@ -7,7 +7,7 @@ import './SiteSummary.scss'
 
 const SiteSummary = ({ site }) => {
 
-  const siteAdded = site.createdAt.toDate().toString()
+  const siteAdded = site.createdAt.toDate()
 
   return (
     <Link to={'/site/' + site.id} className="col col-lg-6">
