@@ -16,22 +16,27 @@ class CreateSite extends Component {
     // images: null,
     lat: '',
     lng: '',
-    description: ''
+    description: '',
+    images: null
   }
+
   handleFileSelect = (event) => {
     console.log(event.target.files);
     this.setState({
       images: event.target.files[0]
     })
   }
-  // fileUploadHandler = () => {
-  //   axios.post()
-  // }
+
+  fileUploadHandler = () => {
+    axios.post()
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     })
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     // console.log(this.state);
@@ -42,6 +47,8 @@ class CreateSite extends Component {
     // console.log(scrollReveals);
     ScrollReveal().reveal(scrollReveals[4].selector, scrollReveals[4].options);
   }
+
+
   render() {
     // console.log('Compo props: ', this.props);
 
@@ -66,7 +73,7 @@ class CreateSite extends Component {
                   </div>
                   <div className="form-group">
                     <label htmlFor="images">Images</label>
-                    <input type="file" multiple className="form-control" id="images" onChange={this.handleFileSelect} />
+                    <input type="file" className="form-control" id="images" onChange={this.handleFileSelect} />
                   </div>
                 </div>
                 <div className="col col-6">
