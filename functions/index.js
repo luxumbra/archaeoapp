@@ -13,6 +13,7 @@ const gcsconfig = {
 }
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage(gcsconfig);
+const slugify = require('slugify');
 
 exports.onFileChange = functions.storage.object().onFinalize(event => {
  console.log('CF change Event: ', event);
@@ -61,7 +62,14 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
     let uploadData = null;
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-      const filePath = path.join(os.tmpdir(), filename);
+
+      const sluggedFilename = slugify(filename, {
+        remove: / [* +~()'"!:@]/g,
+        lower: true
+      });
+      const filePath = path.join(os.tmpdir(), sluggedFilename);
+      console.log('FilePath: ', filePath);
+
       uploadData = {file: filePath, type: mimetype}
       file.pipe(fs.createWriteStream(filePath));
     })
