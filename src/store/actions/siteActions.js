@@ -1,10 +1,14 @@
 export const createSite = (site) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
+    console.log('Create site: ', site);
 
     // console.log(getFirestore);
     const firestore = getFirestore();
     const user = getState().firebase.profile;
     const userId = getState().firebase.auth.uid;
+    const images = getState().images;
+    console.log(images);
+
     // const user
     firestore.collection('sites').add({
       ...site,
@@ -13,9 +17,12 @@ export const createSite = (site) => {
       userId: userId,
       createdAt: new Date()
     }).then(() => {
-      dispatch({ type: 'CREATE_SITE', site });
+      console.log('then: create site: ', site);
+
+      return dispatch({ type: 'CREATE_SITE', site });
+
     }).catch((err) => {
-      dispatch({ type: 'CREATE_SITE_ERROR', err })
-    })
+      return dispatch({ type: 'CREATE_SITE_ERROR', err });
+    });
   }
 };

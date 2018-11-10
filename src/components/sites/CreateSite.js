@@ -13,7 +13,6 @@ class CreateSite extends Component {
   state = {
     siteName: '',
     location: '',
-    // images: null,
     lat: '',
     lng: '',
     description: '',
@@ -21,14 +20,35 @@ class CreateSite extends Component {
   }
 
   handleFileSelect = (event) => {
-    console.log(event.target.files);
+    console.log('Event files: ', event.target.files);
+    const fileObject = event.target.files[0];
+    console.log('fileObject: ', fileObject);
+
+    const selectedFile = {
+      'lastModified': fileObject.lastModified,
+      'lastModifiedDate': fileObject.lastModifiedDate,
+      'name': fileObject.name,
+      'size': fileObject.size,
+      'type': fileObject.type
+    }
+
     this.setState({
-      images: event.target.files[0]
-    })
+      images: selectedFile
+    });
+    console.log('Images: ', this.state.images);
+    return this.state;
+
+
   }
 
   fileUploadHandler = () => {
-    axios.post()
+    const fd = new FormData();
+    console.log('Upload images: ', this.state.images);
+    fd.append('images', this.state.images, this.state.images.name);
+    axios.post('https://us-central1-archaeoapp-1539547680569.cloudfunctions.net/uploadFile', fd)
+      .then(res => {
+        console.log('File upload response: ', res);
+      });
   }
 
   handleChange = (e) => {
@@ -39,8 +59,13 @@ class CreateSite extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state);
-    this.props.createSite(this.state)
+    console.log('Submit state: ', this.state);
+    // const site = {
+    //   site: this.state
+    // }
+    this.fileUploadHandler()
+    this.props.createSite(this.state);
+
   }
 
   componentDidMount() {

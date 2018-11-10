@@ -5,7 +5,9 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const spawn = require('child-process-promise').spawn;
-const cors = require('cors')({origin: true});
+const cors = require('cors')({
+    origin: "*"
+  });
 const Busboy = require('busboy');
 const gcsconfig = {
   projectId: 'archaeoapp-1539547680569',
@@ -53,11 +55,15 @@ exports.onFileChange = functions.storage.object().onFinalize(event => {
 exports.uploadFile = functions.https.onRequest((req, res) => {
 
   cors(req, res, () => {
+    console.log('Request, response: ', { req, res });
     if (req.method !== 'POST') {
       return res.status(500).json({
         message: 'Not allowed!'
       });
     }
+    // res.send("Hello from firebase!");
+    console.log('Request: ', req);
+
     const busboy = new Busboy({headers: req.headers});
     let uploadData = null;
 
