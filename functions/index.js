@@ -5,17 +5,20 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const spawn = require('child-process-promise').spawn;
-const cors = require('cors')({
-    origin: "*"
-  });
+const corsOptions = {
+  origin: "*"
+};
+const cors = require('cors')({corsOptions});
 const Busboy = require('busboy');
 const gcsconfig = {
   projectId: 'archaeoapp-1539547680569',
   keyFilename: 'archaeoapp-1539547680569-firebase-adminsdk-zw877-0542389b4c.json'
 }
+const storageBucket = 'archaeoapp-1539547680569.appspot.com';
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage(gcsconfig);
 const slugify = require('slugify');
+
 
 exports.onFileChange = functions.storage.object().onFinalize(event => {
  console.log('CF change Event: ', event);
@@ -54,34 +57,40 @@ exports.onFileChange = functions.storage.object().onFinalize(event => {
 
 exports.uploadFile = functions.https.onRequest((req, res) => {
 
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+  // console.log('req', req);
+  // console.log('res', res);
   cors(req, res, () => {
-    console.log('Request, response: ', { req, res });
+
     if (req.method !== 'POST') {
       return res.status(500).json({
         message: 'Not allowed!'
       });
     }
-    // res.send("Hello from firebase!");
-    console.log('Request: ', req);
 
     const busboy = new Busboy({headers: req.headers});
-    let uploadData = null;
+    let uploadData = {};
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+
+      console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
 
       const sluggedFilename = slugify(filename, {
         remove: / [* +~()'"!:@]/g,
         lower: true
       });
       const filePath = path.join(os.tmpdir(), sluggedFilename);
-      console.log('FilePath: ', filePath);
 
       uploadData = {file: filePath, type: mimetype}
       file.pipe(fs.createWriteStream(filePath));
     })
 
     busboy.on('finish', () => {
-      const bucket = storage.bucket('archaeoapp-1539547680569.appspot.com');
+      console.log('Finished parsing form...', uploadData);
+
+      const bucket = storage.bucket(storageBucket);
       bucket.upload(uploadData.file, {
         uploadType: 'media',
         metadata: {
@@ -90,17 +99,19 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
           }
         }
       }).then(() => {
-        return res.status(200).json({
+        res.status(200).json({
           message: 'Uploaded!'
-        })
+        });
+        return true;
       }).catch(err => {
-        return res.status(500).json({
+        res.status(500).json({
           error: err
         });
+        return err;
       });
     });
-    return busboy.end(req.rawBody);
 
+    return busboy.end(req.rawBody);
   });
 });
 
