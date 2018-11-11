@@ -13,7 +13,6 @@ class CreateSite extends Component {
   state = {
     siteName: '',
     location: '',
-    // images: null,
     lat: '',
     lng: '',
     description: '',
@@ -21,14 +20,42 @@ class CreateSite extends Component {
   }
 
   handleFileSelect = (event) => {
-    console.log(event.target.files);
+    const fileObject = event.target.files[0];
+    // console.log('fileObject', fileObject);
+
+
+    const selectedFile = {
+      'lastModified': fileObject.lastModified,
+      'lastModifiedDate': fileObject.lastModifiedDate,
+      'name': fileObject.name,
+      'size': fileObject.size,
+      'type': fileObject.type
+    }
     this.setState({
-      images: event.target.files[0]
-    })
+      images: selectedFile
+    });
+
+    return true;
   }
 
-  fileUploadHandler = () => {
-    axios.post()
+  fileUploadHandler = (event) => {
+    const newSiteForm = document.getElementById('newSite');
+    const fd = new FormData(newSiteForm);
+    console.log('Upload images: ', this.state.images);
+    // console.log('THIS: ',event);
+
+    // fd.append('images', this.state.images, this.state.images.name);
+    console.log('FD', fd);
+
+    axios.post('https://us-central1-archaeoapp-1539547680569.cloudfunctions.net/uploadFile', fd)
+    // axios.post('http://localhost:5001/archaeoapp-1539547680569/us-central1/uploadFile', fd)
+
+    .then((res) => {
+      console.log('File upload response: ', res);
+    }).catch((err) => {
+      console.log('Upload Error: ', err);
+      return false;
+    });
   }
 
   handleChange = (e) => {
@@ -38,9 +65,13 @@ class CreateSite extends Component {
   }
 
   handleSubmit = (e) => {
+    // TODO: Add some form validations.
     e.preventDefault();
-    // console.log(this.state);
-    this.props.createSite(this.state)
+    console.log('Submit state: ', this.state);
+    this.fileUploadHandler();
+    this.props.createSite(this.state);
+
+
   }
 
   componentDidMount() {
@@ -60,7 +91,7 @@ class CreateSite extends Component {
         <div className="row">
             <div className="form-wrapper col col-sm-8 col-lg-6 mx-auto sr-slide-up">
               <h2>Add new site</h2>
-              <form onSubmit={this.handleSubmit} className="row">
+              <form id="newSite" onSubmit={this.handleSubmit} className="row">
                 <div className="col col-6">
                   <div className="form-group">
                     <label htmlFor="siteName">Site Name</label>
@@ -73,7 +104,7 @@ class CreateSite extends Component {
                   </div>
                   <div className="form-group">
                     <label htmlFor="images">Images</label>
-                    <input type="file" className="form-control" id="images" onChange={this.handleFileSelect} />
+                    <input type="file" className="form-control" id="images" name="images" onChange={this.handleFileSelect} />
                   </div>
                 </div>
                 <div className="col col-6">
