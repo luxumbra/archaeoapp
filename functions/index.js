@@ -60,8 +60,6 @@ exports.uploadFile = functions.https.onRequest((req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-  // console.log('req', req);
-  // console.log('res', res);
   cors(req, res, () => {
 
     if (req.method !== 'POST') {

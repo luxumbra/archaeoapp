@@ -42,13 +42,15 @@ class CreateSite extends Component {
     const newSiteForm = document.getElementById('newSite');
     const fd = new FormData(newSiteForm);
     console.log('Upload images: ', this.state.images);
-    // console.log('THIS: ',event);
 
-    // fd.append('images', this.state.images, this.state.images.name);
     console.log('FD', fd);
 
-    axios.post('https://us-central1-archaeoapp-1539547680569.cloudfunctions.net/uploadFile', fd)
-    // axios.post('http://localhost:5001/archaeoapp-1539547680569/us-central1/uploadFile', fd)
+    axios.post('https://us-central1-archaeoapp-1539547680569.cloudfunctions.net/uploadFile', fd, {
+      onUploadProgress: ProgressEvent => {
+        console.log('Upload progress: ' + Math.round(ProgressEvent.loaded / ProgressEvent.total * 100) + '%');
+
+      }
+    })
 
     .then((res) => {
       console.log('File upload response: ', res);
@@ -95,38 +97,43 @@ class CreateSite extends Component {
                 <div className="col col-6">
                   <div className="form-group">
                     <label htmlFor="siteName">Site Name</label>
-                    <input type="text" className="form-control" id="siteName" aria-describedby="nameHelp" placeholder="Enter Site Name" onChange={this.handleChange} />
-                    <small id="nameHelp" className="form-text text-muted">Example: Cashtal yn Ard.</small>
+                    <input type="text" className="form-control" id="siteName" aria-describedby="siteNameHelp" placeholder="Enter Site Name" onChange={this.handleChange} />
+                    <small id="siteNameHelp" className="form-text text-muted">Example: Cashtal yn Ard.</small>
                   </div>
                   <div className="form-group">
                     <label htmlFor="location">Location</label>
-                    <input type="text" className="form-control" id="location" placeholder="Enter location" onChange={this.handleChange} />
+                    <input type="text" className="form-control" id="location" placeholder="Enter location" aria-describedby="locationHelp" onChange={this.handleChange} />
+                    <small id="locationHelp" className="form-text text-muted">Where is this site?</small>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="images">Images</label>
-                    <input type="file" className="form-control" id="images" name="images" onChange={this.handleFileSelect} />
+                    <label htmlFor="images" className="sr-only">Images</label>
+                    <input style={{display: 'none'}} type="file" className="form-control" id="images" name="images" multiple onChange={this.handleFileSelect} ref={fileInput => this.fileInput = fileInput} />
+                    <button onClick={() => this.fileInput.click()}>Upload images</button>
                   </div>
                 </div>
                 <div className="col col-6">
                   <div className="form-group">
-                    <div className="form-group">
-                      <label htmlFor="lat">Latitude</label>
-                      <input type="text" className="form-control" id="lat" aria-describedby="latHelp" placeholder="Enter Latitude" onChange={this.handleChange} />
-                      <label htmlFor="lat">Longitude</label>
-                      <input type="text" className="form-control" id="lng" aria-describedby="lngHelp" placeholder="Enter Longitude" onChange={this.handleChange} />
-                    </div>
+                    <label htmlFor="lat">Latitude</label>
+                    <input type="text" className="form-control" id="lat" aria-describedby="latHelp" placeholder="Enter Latitude" onChange={this.handleChange} />
+                    <small id="latHelp" className="form-text text-muted">Example: 54.235</small>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lat">Longitude</label>
+                    <input type="text" className="form-control" id="lng" aria-describedby="lngHelp" placeholder="Enter Longitude" onChange={this.handleChange} />
+                    <small id="lngHelp" className="form-text text-muted">Example: -4.345</small>
+                  </div>
                     {/* <label htmlFor="siteName">Site Name</label>
                     <input type="text" className="form-control" id="siteName" aria-describedby="nameHelp" placeholder="Enter Site Name" onChange={this.handleChange} />
                     <small id="nameHelp" className="form-text text-muted">Example: Cashtal yn Ard.</small> */}
-                  </div>
                 </div>
-                <div className="col col-8">
+                <div className="col col-8 mx-auto">
                   <div className="form-group">
                     <label htmlFor="description">Site Description</label>
                     <textarea id="description" className="form-control" onChange={this.handleChange}></textarea>
                   </div>
+                  <button type="submit" className="btn btn-primary">Add</button>
                 </div>
-                <button type="submit" className="btn btn-primary">Add</button>
+
               </form>
           </div>
         </div>
