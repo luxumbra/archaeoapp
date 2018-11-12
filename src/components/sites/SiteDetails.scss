@@ -1,6 +1,8 @@
 .site-details {
+  max-width: 100%;
+  .container-fluid,
   .container {
-    max-width: 100%;
+    width: 100%;
   }
 }
 .site-map {
@@ -8,7 +10,6 @@
   max-height: 800px;
   max-width: 100%;
   box-shadow: 0 0 5rem rgba(0,0,0,0.9);
-  overflow-x: hidden;
 }
 .site-info {
   padding-top: 2rem;
