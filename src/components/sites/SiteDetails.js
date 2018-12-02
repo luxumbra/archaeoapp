@@ -12,7 +12,10 @@ const SiteDetails = (props) => {
 
     const { site } = props
 
+    if(props.auth.uid){
+      var editButton = <button className="btn btn-primary">Edit</button>;
 
+    }
     console.log('Site details props: ', props);
     // if(!auth.uid) return <Redirect to='/signin' />;
 
@@ -29,10 +32,13 @@ const SiteDetails = (props) => {
                 </div>
               </div>
               <div className="row">
-                <div className="col col-10 col-lg-8 mx-auto site-info">
+                <div className="col col-10 col-lg-7 mx-auto site-info">
                     <h2 className=''>{site.siteName}</h2>
                     <p className="lead">{site.summary}</p>
                     <p className=''>{site.description}</p>
+                </div>
+                <div className="col col-lg-1">
+                  {editButton}
                 </div>
               </div>
               <div className="row">
